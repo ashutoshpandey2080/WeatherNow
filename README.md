@@ -19,25 +19,6 @@ Before getting started, make sure you have the following installed on your machi
 - Node.js (version 16 or above)
 - npm or yarn package manager
 
-## Project Structure
-
-├── public/
-│   └── index.html          # Main HTML file
-├── src/
-│   ├── components/
-│   │   ├── Header.jsx      # Header component
-│   │   ├── Input.jsx       # Input search component
-│   │   ├── TimeAndLocation.jsx  # Time and Location display
-│   │   ├── TempDetails.jsx  # Temperature and weather details
-│   │   └── Forecast.jsx     # Hourly forecast component
-│   ├── services/
-│   │   └── getWeather.js    # Service for fetching weather data
-│   └── App.jsx              # Main app component
-├── tailwind.config.js       # Tailwind configuration file
-├── postcss.config.js        # PostCSS configuration file
-├── package.json             # npm/yarn dependencies
-└── README.md                # This file
-
 
 ## Notes
 
