@@ -1,11 +1,9 @@
-/* eslint-disable react/prop-types */
 import { BiSolidDropletHalf } from "react-icons/bi";
 import { FaThermometerEmpty } from "react-icons/fa";
 import { FiWind } from "react-icons/fi";
 import { GiSunrise, GiSunset } from "react-icons/gi";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
-// Helper function to convert ISO time to 'HH:MM' format
 const formatTime = (timeString) => {
     const date = new Date(timeString);
     return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
@@ -95,7 +93,7 @@ const TempDetails = ({ weatherData }) => {
     };
 
     const getWeatherIcon = (code) => {
-        return weatherIcons[code] || "❓"; // Fallback to a question mark if code is unknown
+        return weatherIcons[code] || "❓"; 
     };
 
     return (
