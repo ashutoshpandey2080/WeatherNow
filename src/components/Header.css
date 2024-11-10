@@ -1,0 +1,20 @@
+/* Header.css */
+.text-gradient {
+  background: linear-gradient(90deg, #87CEEB, #FFFFFF, #87CEEB);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.animate-gradient {
+  animation: gradient-flow 5s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
