@@ -1,25 +1,22 @@
-/* eslint-disable react/prop-types */
 const formatTime = (isoString) => {
-  const date = new Date(isoString); // Parse the ISO 8601 string directly into a Date object
+  const date = new Date(isoString); 
   const options = { hour: "2-digit", minute: "2-digit", hour12: true };
-  return date.toLocaleString("en-US", options); // Format to 12-hour time with AM/PM
+  return date.toLocaleString("en-US", options); 
 };
 
 const Forecast = ({ weatherData }) => {
-  // Check if hourly data exists in the weatherData
   console.log(weatherData);
   if (!weatherData || !weatherData.hourly) {
-      return <p>Loading forecast...</p>; // Display loading if no hourly data
+      return <p>Loading forecast...</p>;
   }
 
-  // Get hourly temperature, time, and weather code data (next 12 hours)
   const hourlyTemperatures = weatherData.hourly.temperature_2m || [];
-  const hourlyTimes = weatherData.hourly.time || []; // The time is an array of ISO strings
+  const hourlyTimes = weatherData.hourly.time || []; 
   const hourlyWeatherCodes = weatherData.hourly.weather_code || [];
 
-  const forecastData = hourlyTemperatures.slice(0, 12); // Limit to next 12 hours
-  const forecastTimes = hourlyTimes.slice(0, 12); // Corresponding times for the next 12 hours
-  const forecastWeatherCodes = hourlyWeatherCodes.slice(0, 12); // Corresponding weather codes
+  const forecastData = hourlyTemperatures.slice(0, 12); 
+  const forecastTimes = hourlyTimes.slice(0, 12); 
+  const forecastWeatherCodes = hourlyWeatherCodes.slice(0, 12);
 
   // Weather icons mapping based on the weather code
   const weatherIcons = {
@@ -53,9 +50,8 @@ const Forecast = ({ weatherData }) => {
       99: "⛈️🧊🧊", // Thunderstorm with heavy hail
   };
 
-  // Function to get weather icon based on code
   const getWeatherIcon = (code) => {
-      return weatherIcons[code] || "❓"; // Fallback to a question mark if code is unknown
+      return weatherIcons[code] || "❓";
   };
 
   return (
@@ -65,9 +61,7 @@ const Forecast = ({ weatherData }) => {
           </div>
           <hr className='my-1' />
 
-          {/* Container with horizontal scrolling */}
           <div className='flex items-center justify-start overflow-x-auto space-x-4 py-4 scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent'>
-              {/* Loop over the forecast data for the next 12 hours */}
               {forecastData.length > 0 ? (
                   forecastData.map((temp, index) => (
                       <div
@@ -77,7 +71,6 @@ const Forecast = ({ weatherData }) => {
                           <p className='font-light text-sm'>
                               {formatTime(forecastTimes[index])}
                           </p>
-                          {/* Display weather icon based on code */}
                           <p className='text-2xl'>
                               {getWeatherIcon(forecastWeatherCodes[index])}
                           </p>
@@ -85,7 +78,7 @@ const Forecast = ({ weatherData }) => {
                       </div>
                   ))
               ) : (
-                  <p>No hourly data available.</p> // Display a message if no hourly data is found
+                  <p>No hourly data available.</p> 
               )}
           </div>
       </div>
