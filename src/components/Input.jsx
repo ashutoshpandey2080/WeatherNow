@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { getCoordinatesByCityName } from "../services/getWewather.js";
@@ -6,17 +5,15 @@ import { getCoordinatesByCityName } from "../services/getWewather.js";
 const Input = ({ setSearchCity, setCoordinates }) => {
     const [city, setCity] = useState("");
 
-    // Function to handle searching by city name
     const handleSearch = async () => {
         if (city.trim() !== "") {
             try {
-                // Fetch coordinates using the city name
                 const { latitude, longitude } = await getCoordinatesByCityName(
                     city
                 );
                 if (latitude && longitude) {
-                    setCoordinates({ latitude, longitude }); // Update coordinates
-                    setSearchCity(city); // Set city name for display
+                    setCoordinates({ latitude, longitude }); 
+                    setSearchCity(city);
                 } else {
                     alert("City not found. Please try again.");
                 }
